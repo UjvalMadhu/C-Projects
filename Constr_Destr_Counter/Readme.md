@@ -7,31 +7,6 @@ This project implements a Counter class in C++ demonstrating various Object-Orie
 - Destructor
 - Basic counter operations (get, set, increment)
 
-## Features
-
-The code effectively demonstrates:
-
-- Binary file I/O
-- Struct serialization
-- User input validation
-- Preprocessor directives for different execution modes
-- Time manipulation in C++
-- Error handling
-
-## Running the Program
-
-```bash
-make
-# or
-make all      # This compiles all source files and creates the executable counter_test.exe
-
-make run      # This builds (if needed) and executes the program
-
-make test.log # This runs the program and saves output to counter_test.log
-
-make clean    # Removes all generated files (executable, object files, logs)
-```
-
 ## Description
 
 ### Program Structure:
@@ -49,6 +24,21 @@ make clean    # Removes all generated files (executable, object files, logs)
 - Compiles source files into object files (.o)
 - Links object files into final executable
 - Automatically handles dependencies (recompiles only when needed)
+
+## Running the Program
+
+```bash
+make
+# or
+make all      # This compiles all source files and creates the executable counter_test.exe
+
+make run      # This builds (if needed) and executes the program
+
+make test.log # This runs the program and saves output to counter_test.log
+
+make clean    # Removes all generated files (executable, object files, logs)
+```
+
 
 ## Additional Notes:
 
