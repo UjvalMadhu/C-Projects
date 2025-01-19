@@ -63,7 +63,7 @@ Uses cin.clear() and cin.ignore() for robust input handling
 
 ## License
 
-This project is licensed under the [License Name] - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the GNU General Public License, Version 3 - see the [LICENSE.md](../LICENSE.md) file for details.
 
 ## Contact
 
