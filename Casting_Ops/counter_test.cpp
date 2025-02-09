@@ -8,7 +8,7 @@
 // Filename: casting_test.cpp                                       //
 // Description: Program for testing the counter class with the      //
 // casting functionality                                            //
-// Change Log: 31st Dec 2024                                        //
+// Change Log: 8th Feb 2024                                        //
 // Copyright: Ujval Madhu, All rights reserved                      //
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
@@ -34,65 +34,58 @@ int main(){
     counter1.increment ( ) ;
     assert ( counter1.get_count() == 9) ;
 
-    cout << "Setting counter1 mode to BCD using overloaded function" << endl;
-    counter1.set(Counter::BCD);
+    // 1. Static Casting (Upcasting)
+    Derived_Counter* dc_ptr = new Derived_Counter();
+    dc_ptr->set(100);
+    dc_ptr->increment();
+    Counter* bc_ptr = static_cast<Counter*>(dc_ptr);
+    cout<< "Base Class From Derived Class (Upcasting):" << bc_ptr->get_count() << endl;
 
-    cout << "Get Mode check" << endl;
-    Counter::mode_t c1_mode = counter1.get_mode();
+   //2. Static Casting (Downcasting)
+    Derived_Counter* dc_ptr2 = static_cast<Derived_Counter*>(bc_ptr);
+    cout<< "Derived Class From Base Class (Downcasting):" << dc_ptr2->get_count() << endl;
+    dc_ptr2->new_func();
+    assert ( dc_ptr2->get_count() == 102 ) ;
 
-    cout << "Incrementing counter1 value" << endl;
-    counter1.increment ( ) ;
-    //cout << counter1.get_count() << endl;
-    assert ( counter1.get_count() == 16) ;
+   // 3. Dynamic Cast (Downcasting)
+    Derived_Counter* dc_ptr3 = dynamic_cast<Derived_Counter*>(bc_ptr);
+    dc_ptr3->increment();
+    cout<< "Derived Class3 From Base Class (Downcasting):" << dc_ptr3->get_count() << endl;
+    assert ( dc_ptr2->get_count() == 104 ) ;
+    Square* sq_ptr4 = dynamic_cast<Square*>(bc_ptr);
+    cout<< "Checking if Dynamic Cast returns nullptr for incorrect casting" << endl;
+    assert (sq_ptr4 == nullptr) ;
 
-    cout << "Initializing counter2 with copy constructor" << endl;
-    Counter counter2(counter1);
-    assert ( counter2.get_count() == 16 ) ;
+    // 4. const_cast
+    const int const_var   = 10;
+    int* nonConst_ptr_var = const_cast<int*>(&const_var);
+    *nonConst_ptr_var+=1;
+    cout<< "Modified const variable value using const casting: "<< *nonConst_ptr_var << endl;
+    assert (*nonConst_ptr_var == 11) ;
+  
+    // 5. Reinterpret Cast
+    cout  << "Size of Counter* : "        << sizeof(Counter*)
+          << "\nSize of int : "           << sizeof(int)
+          << "\nSize of long int : "      << sizeof(long int)
+          << "\nSize of long long int : " << sizeof(long long int)
+          << "\nSize of short int : "     << sizeof(short int)
+          << "\nSize of char : "          << sizeof(char) << endl;
 
-    cout << "Initializing using individual parameterization counter2 with value 1 and mode = Gray " << endl;
-    counter2.set(0);
-    counter2.set(Counter::BCD);
-    cout << "Counter 2 BCD Counting" << endl;
-    for(int i = 0; i< 25; i++){
-      counter2.increment();
-      unsigned temp = counter2.get_count();
-      cout << temp << endl;
-    }
-    //cout << counter2.get_count() << endl;
-    assert ( counter2.get_count() == 37 ) ;
+    cout<< "Base Class before reinterpret Casting to and from long int:" << bc_ptr->get_count() << endl;
+    long int li_var = reinterpret_cast<long int>(&bc_ptr);
+    Counter* bc_ptr2 = reinterpret_cast<Counter*>(&li_var);
+    cout<< "Base Class after reinterpret Casting to and from long int:" << bc_ptr2->get_count() << endl;
 
-    cout << "Initializing using parameterized constructor: counter3 with value 1 and mode = Gray" << endl;
-    Counter counter3(1, Counter::GRY);
-    assert ( counter3.get_count() == 1) ;
-    assert ( counter3.get_mode() == Counter::GRY) ;
+    // Reinterpret Casting to lower precision than the Counter* size will result in error
+    // cout<< "Base Class before reinterpret Casting to and from short int:" << bc_ptr->get_count() << endl;
+    // short int si_var = reinterpret_cast<short int>(&bc_ptr);
+    // Counter* bc_ptr3 = reinterpret_cast<Counter*>(&si_var);
+    // cout<< "Base Class after reinterpret Casting to and from short int:" << bc_ptr3->get_count() << endl;
 
-    cout << "Counting to 10 in Gray Code with counter3" << endl;
-    for(int i = 0; i< 10; i++){
-      unsigned temp = counter3.get_count();
-      cout << temp << endl;
-      counter3.increment();
-    }
-    assert ( counter3.get_count() == 14 ) ;
-
-    cout << "Assigning value 90 to counter2" << endl;
-    counter2 = 90;
-    assert ( counter2.get_count() == 90 ) ;
-
-    cout << "Moving value counter1 to counter2" << endl;
-    counter2 = move(counter1);
-    assert ( counter2.get_count() == 16) ;
-    assert ( counter1.get_count() == 0 ) ;
-
-    cout << "Combining counter1 with a temp counter of count value 10" << endl;
-    counter1.combine_counters(Counter(10, Counter::BIN));
-    assert( counter1.get_count() == 10 );
-
-    cout << "Counting the number of objects" << endl;
-    assert ( counter2.get_object_count() == 3) ;
+    cout << "Casting Counter* to int and back and then trying to use the pointer" << endl;
+    cout<< reinterpret_cast<Counter*>(reinterpret_cast<unsigned long int>(&bc_ptr)) -> get_count( ) << endl;
 
     cout << "TEST PASSED" << endl;
 
   return 0;
-
-
 }

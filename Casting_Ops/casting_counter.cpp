@@ -14,6 +14,7 @@
 ////////////////////////////////////////////////////////////////////
 
 #include "casting_counter.h"
+#include <iostream>
 
 using namespace std;
 
@@ -130,4 +131,51 @@ void Counter::set(int value_, Counter::mode_t mode_){
 }
 
 
+// Derived Counter Definitions: Increments by 2 instead of 1
 
+// Counter Increment
+void Derived_Counter::increment(){
+
+    switch(mode) {
+
+        case BIN:   ref_value+=2; break;                                          // Binary Counter
+        case BCD:                                                                 // BCD Counter
+                {   for(unsigned j = 0; j < 2; j++){                              // Adding 2 times
+                        unsigned temp = ref_value, result = 0, carry = 1;
+                        for(unsigned i = 0; i < sizeof(ref_value); i++){
+                            unsigned l4b = (temp + carry) & 0xF;
+                            if((carry = (l4b == 0xA))) l4b = 0x0;
+                            result +=  (l4b<<i*4);
+                            temp >>= 4;
+                        } ref_value = result; 
+                    }
+                } break;
+        case GRY:                                                                // Gray Code Counter
+                {    unsigned bin = ref_value;
+                    for(unsigned mask = bin >> 1; mask; mask >>= 1){
+                        bin ^= mask;
+                    }
+                    bin += 2;
+                    ref_value = bin ^ (bin >> 1); 
+                }break;
+    }
+
+    
+};
+
+void Derived_Counter::new_func(void){
+
+    cout << "The Count for the derived class is: " <<this->get_count() << endl;
+
+};
+
+// Square class definitions
+
+Square::Square(int value_): value(value_) {};
+
+Square::~Square(){};
+
+void Square::square_calc(){
+    value = value*value;
+};
+    

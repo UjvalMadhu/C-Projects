@@ -42,12 +42,12 @@ class Counter{
         // Move Assignment Operator
         Counter& operator =( Counter&& other) noexcept;
 
-        // Destructor
-        ~Counter();
+        // Virtual Destructor, so that it is applicable to derived classes
+        virtual ~Counter();
 
         int get_count(void) const;
 
-        void increment(void);
+        virtual void increment(void); // Virtual
 
         void combine_counters(const Counter& other) &;
 
@@ -71,6 +71,29 @@ class Counter{
         int& ref_value;                  // Reference Value of count
         static unsigned object_count;    // keeps track of the number of objects of the class
         mode_t mode;
+
+};
+
+// A Derived class for counter
+
+class Derived_Counter : public Counter{
+    public:
+        void increment(void) override;
+        void new_func(void);
+};
+
+// A new unrelated class
+
+class Square{
+    public:
+        Square(int value_);
+
+        ~Square();
+
+        void square_calc();
+    
+    private:
+        int value;
 
 };
 

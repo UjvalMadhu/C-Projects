@@ -1,24 +1,23 @@
-# Project Name: Function Enhancement on the Counter Class
+# Project Name: Testing Casting Capabilities on the Counter Class
 
-This project implements a Counter class in C++ demonstrating Object-Oriented implementation of different types of counters (Binary, BCD, and Gray Code), the project also involves a test program that verifies the functionality of the counter class using assertions.
+This project implements a Counter class in C++ and then tests various Explicit Type Conversion Capabilities
  
-Key features include:
+Key Type Conversion Methods tested are:
 
-- Three counting modes: Binary (BIN), Binary-Coded Decimal (BCD), and Gray Code (GRY)
-- Support for different counting operations
-- Copy/Move semantics for object management
-- Static tracking of Counter objects
-- Member functions for getting/setting counter values and modes
-
+- Explicit Casting
+    - Static Casting:
+    - Dynamic Casting
+    - Const Casting
+    - Reinterpret Casting
 ## Description
 
 ### Program Structure:
 
 
-- func_counter.h:           Header file containing the Counter class declaration
-- functions_counter.cpp:    Implementation of Counter class methods
+- casting_counter.h:        Header file containing the Counter class declaration
+- casting_counter.cpp:      Implementation of Counter class methods
 - counter_test.cpp:         Test program that exercises Counter functionality
-- Makefile:                  Build automation
+- Makefile:                 Build automation
 
 
 ## Build Process:
