@@ -1,10 +1,12 @@
-////////////////////////////////////////////////////
-////         Project:  IO Operations          //////
-////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+////                       Project:  IO Operations                         //////
+/////////////////////////////////////////////////////////////////////////////////
 // Author: Ujval Madhu
-// Description: C++ program to input name and date
-// of birth from a user, write it to file, read from
-// the file and display the contents.
+// Description: This program demonstrates some fundamental IO operations in C++ 
+// 1) The program inputs name and date of birth from a user,
+// 2) Calculates Age of User from DOB,
+// 3) Write to a file,
+// 4) Read data from the file and display the contents.
 // Change Log: 28th Dec 2024
 
 #include <iostream>
