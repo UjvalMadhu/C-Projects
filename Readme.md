@@ -1,6 +1,6 @@
 # C++ Projects
 
-This repository includes various C++ projects that are mostly for educational purposes and explores various language features. 
+This repository includes various C++ projects that are done mostly for educational purposes and explores various features of the C++ language.
 
 ## Project Index:
 
