@@ -33,23 +33,23 @@ class TemperatureConverter {
             void display() const;
         }
 
-        Temperature temp;                  // Calling the constructor of the struct, See Struct Implementation
+        Temperature temp;                  // Variable Declaration
 
     public:
-        TemperatureConverter();                // Class Constructor
+        TemperatureConverter();            // Class Constructor
 
         //Static Conversion Commands
-        static double c2F(double celsius);
-        static double c2K(double celsius);
-        static double f2C(double fahrenheit);
-        static double f2K(double fahrenheit);
-        static double k2C(double kelvin);
-        static double k2CF(double kelvin);
+        static double c2F(double c);
+        static double c2K(double c);
+        static double f2C(double f);
+        static double f2K(double f);
+        static double k2C(double k);
+        static double k2CF(double k);
 
         // Interface Functions
-        void setC(double celsius);
-        void setF(double fahrenheit);
-        void setK(double kelvin);
+        void setC(double c);
+        void setF(double f);
+        void setK(double k);
         void displayTemperatures() const;
         void showMenu() const;
         void run();

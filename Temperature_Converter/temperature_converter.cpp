@@ -52,3 +52,10 @@ void TemperatureConverter::Temperature::display() const{
     std::cout << "||================================||\n";
 }
 
+TemperatureConverter::TemperatureConverter() : temp(20.0) {}
+
+// Public Function Implementations, can be used by user and derived classes
+
+double TemperatureConverter::c2F(double celsius){
+    return  (celsius * 9.0 / 5.0) + 32.0;
+}
