@@ -43,5 +43,12 @@ void TemperatureConverter::Temperature::display() const{
     std::cout << "====================================\n";
     std::cout << "||       Temperature Results      ||\n";
     std::cout << "====================================\n";
-    std::cout << "|| Celsius: "<< std::setw(10) << celsius
+    std::cout << "|| Celsius: "<< std::setw(10) << std::fixed <<std::setprecision(2)
+              << celsius << "°C         ||\n";
+    std::cout << "|| Fahrenheit: "<< std::setw(10) << std::fixed <<std::setprecision(2)
+              << fahrenheit << "°F   ||\n";
+    std::cout << "|| Kelvin: "<< std::setw(10) << std::fixed <<std::setprecision(2)
+              << kelvin << "°K          ||\n"; 
+    std::cout << "||================================||\n";
 }
+

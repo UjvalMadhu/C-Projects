@@ -33,7 +33,7 @@ class TemperatureConverter {
             void display() const;
         }
 
-        Temperature temp;
+        Temperature temp;                  // Calling the constructor of the struct, See Struct Implementation
 
     public:
         TemperatureConverter();                // Class Constructor
