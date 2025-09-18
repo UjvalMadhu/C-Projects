@@ -59,3 +59,42 @@ TemperatureConverter::TemperatureConverter() : temp(20.0) {}
 double TemperatureConverter::c2F(double celsius){
     return  (celsius * 9.0 / 5.0) + 32.0;
 }
+
+double TemperatureConverter::c2K(double celsius){
+    return celsius + 273.15;
+}
+
+double TemperatureConverter::f2C(double fahrenheit){
+    return (fahrenheit - 32) * 5.0 / 9.0;
+}
+
+double TemperatureConverter::f2K(double fahrenheit){
+    return c2K(f2C(fahrenheit));
+}
+
+double TemperatureConverter::k2C(double kelvin){
+    return kelvin - 273.15;
+}
+
+double TemperatureConverter::k2F(double kelvin){
+    return c2F(k2C(kelvin));
+}
+
+void TemperatureConverter::setC(double celsius) {
+    temp.celsius = celsius;
+    temp.updateFromCelsius();
+}
+
+void TemperatureConverter::setF(double fahrenheit) {
+    temp.fahrenheit = fahrenheit;
+    temp.updateFromFahrenheit();
+}
+
+void TemperatureConverter::setK(double kelvin) {
+    temp.kelvin = kelvin;
+    temp.updateFromKelvin();
+}
+
+void TemperatureConverter::displayTemperatures() const {
+    temp.display();
+}
