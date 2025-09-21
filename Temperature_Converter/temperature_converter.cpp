@@ -98,3 +98,153 @@ void TemperatureConverter::setK(double kelvin) {
 void TemperatureConverter::displayTemperatures() const {
     temp.display();
 }
+
+void TemperatureConverter::clearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void TemperatureConverter::waitForEnter() {
+    std::cout << "\nPress Enter to continue...";
+    std::cin.ignore();
+    std::cin.get();
+}
+
+void TemperatureConverter::showMenu() const {
+    std::cout << "==========================================\n";
+    std::cout << "||       TEMPERATURE CONVERTER          ||\n";
+    std::cout << "==========================================\n";
+    std::cout << "|| 1. Enter Celsius temperature         ||\n";
+    std::cout << "|| 2. Enter Fahrenheit temperature      ||\n";
+    std::cout << "|| 3. Enter Kelvin temperature          ||\n";
+    std::cout << "|| 4. Show current temperatures         ||\n";
+    std::cout << "|| 5. Preset: Water freezing point      ||\n";
+    std::cout << "|| 6. Preset: Water boiling point       ||\n";
+    std::cout << "|| 7. Preset: Room temperature          ||\n";
+    std::cout << "|| 8. Show reference information        ||\n";
+    std::cout << "|| 0. Exit                              ||\n";
+    std::cout << "==========================================\n";
+    std::cout << "Enter your choice: ";
+}
+
+void TemperatureConverter::run() {
+    int choice;
+    double inputTemp;
+
+    std::cout << "Welcome to Temperature Converter\n\n"
+
+    while(true) {
+        showMenu();
+
+        if (!(std::cin>> choice)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input! Please Enter a number. \n";
+            waitForEnter();
+            clearScreen();
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                std::cout << "\n Enter Temperature in Celsius: ";
+                if (std::cin>> inputTemp){
+                    setC(inputTemp);
+                    std::cout << "\n";
+                    displayTemperatures();
+                } else {
+                    std::cout << "Invalid Temperature Value!\n";
+                    std::cin.clear;
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+                waitForEnter();
+                break;
+            
+            case 2:
+                std::cout << "\n Enter Temperature in Fahrenheit: ";
+                if (std::cin>> inputTemp){
+                    setF(inputTemp);
+                    std::cout << "\n";
+                    displayTemperatures();
+                } else {
+                    std::cout << "Invalid Temperature Value!\n";
+                    std::cin.clear;
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+                waitForEnter();
+                break;
+            
+            case 3:
+                std::cout << "\n Enter Temperature in Kelvin: ";
+                if (std::cin>> inputTemp){
+                    setK(inputTemp);
+                    std::cout << "\n";
+                    displayTemperatures();
+                } else {
+                    std::cout << "Invalid Temperature Value!\n";
+                    std::cin.clear;
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+                waitForEnter();
+                break;
+            
+            case 4:
+                std::cout << "\n";
+                displayTemperatures();
+                waitForEnter();
+                break;
+
+             case 5:
+                setCelsius(0.0);
+                std::cout << "\nSet to water freezing point:\n";
+                displayTemperatures();
+                waitForEnter();
+                break;
+                
+            case 6:
+                setCelsius(100.0);
+                std::cout << "\nSet to water boiling point:\n";
+                displayTemperatures();
+                waitForEnter();
+                break;
+                
+            case 7:
+                setCelsius(20.0);
+                std::cout << "\nSet to room temperature:\n";
+                displayTemperatures();
+                waitForEnter();
+                break;
+
+            case 8:
+                std::cout << "==============================================\n";
+                std::cout << "||           REFERENCE TEMPERATURES          ||\n";
+                std::cout << "==============================================\n";
+                std::cout << "|| Absolute Zero: 0K / -273.15 C / -459.67 F ||\n";
+                std::cout << "|| Water Freezes:  273.15 K / 0 C / 32 F     ||\n";
+                std::cout << "|| Water Boils:  373.15 K  / 100 C / 212 F   ||\n";
+                std::cout << "||                                           ||\n";
+                std::cout << "|| Conversion Formulas:                      ||\n";
+                std::cout << "|| F = (C x 9/5) + 32                        ||\n";
+                std::cout << "|| C = (F - 32) x 5/9                        ||\n";
+                std::cout << "|| K = C + 273.15                            ||\n";
+                std::cout << "===============================================\n";
+                waitForEnter();
+                break;
+            
+            case 0:
+                std::cout << "\nThank you for using Temperature Converter!\n";
+                return;
+            
+            default:
+                std::cout << "Inalid Entry! Please Select 0-8\n";
+                waitForEnter();
+                break;
+        }
+
+        clearScreen();
+    }
+        
+}
