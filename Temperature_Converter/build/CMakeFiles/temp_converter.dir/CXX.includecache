@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/main.cpp
+temperature_converter.h
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/temperature_converter.h
+
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/temperature_converter.cpp
+temperature_converter.h
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/temperature_converter.h
+iostream
+-
+iomanip
+-
+sstream
+-
+limits
+-
+
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/temperature_converter.h
+string
+-
+iostream
+-
+

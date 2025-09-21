@@ -43,12 +43,12 @@ void TemperatureConverter::Temperature::display() const{
     std::cout << "====================================\n";
     std::cout << "||       Temperature Results      ||\n";
     std::cout << "====================================\n";
-    std::cout << "|| Celsius: "<< std::setw(10) << std::fixed <<std::setprecision(2)
-              << celsius << "°C         ||\n";
+    std::cout << "|| Celsius:    "<< std::setw(10) << std::fixed <<std::setprecision(2)
+              << celsius << "°C       ||\n";
     std::cout << "|| Fahrenheit: "<< std::setw(10) << std::fixed <<std::setprecision(2)
-              << fahrenheit << "°F   ||\n";
-    std::cout << "|| Kelvin: "<< std::setw(10) << std::fixed <<std::setprecision(2)
-              << kelvin << "°K          ||\n"; 
+              << fahrenheit << "°F       ||\n";
+    std::cout << "|| Kelvin:     "<< std::setw(10) << std::fixed <<std::setprecision(2)
+              << kelvin << "°K       ||\n"; 
     std::cout << "||================================||\n";
 }
 
@@ -82,17 +82,17 @@ double TemperatureConverter::k2F(double kelvin){
 
 void TemperatureConverter::setC(double celsius) {
     temp.celsius = celsius;
-    temp.updateFromCelsius();
+    temp.updateFromC();
 }
 
 void TemperatureConverter::setF(double fahrenheit) {
     temp.fahrenheit = fahrenheit;
-    temp.updateFromFahrenheit();
+    temp.updateFromF();
 }
 
 void TemperatureConverter::setK(double kelvin) {
     temp.kelvin = kelvin;
-    temp.updateFromKelvin();
+    temp.updateFromK();
 }
 
 void TemperatureConverter::displayTemperatures() const {
@@ -134,7 +134,7 @@ void TemperatureConverter::run() {
     int choice;
     double inputTemp;
 
-    std::cout << "Welcome to Temperature Converter\n\n"
+    std::cout << "Welcome to Temperature Converter\n\n";
 
     while(true) {
         showMenu();
@@ -157,7 +157,7 @@ void TemperatureConverter::run() {
                     displayTemperatures();
                 } else {
                     std::cout << "Invalid Temperature Value!\n";
-                    std::cin.clear;
+                    std::cin.clear();
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
                 waitForEnter();
@@ -171,7 +171,7 @@ void TemperatureConverter::run() {
                     displayTemperatures();
                 } else {
                     std::cout << "Invalid Temperature Value!\n";
-                    std::cin.clear;
+                    std::cin.clear();
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
                 waitForEnter();
@@ -185,7 +185,7 @@ void TemperatureConverter::run() {
                     displayTemperatures();
                 } else {
                     std::cout << "Invalid Temperature Value!\n";
-                    std::cin.clear;
+                    std::cin.clear();
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
                 waitForEnter();
@@ -198,21 +198,21 @@ void TemperatureConverter::run() {
                 break;
 
              case 5:
-                setCelsius(0.0);
+                setC(0.0);
                 std::cout << "\nSet to water freezing point:\n";
                 displayTemperatures();
                 waitForEnter();
                 break;
                 
             case 6:
-                setCelsius(100.0);
+                setC(100.0);
                 std::cout << "\nSet to water boiling point:\n";
                 displayTemperatures();
                 waitForEnter();
                 break;
                 
             case 7:
-                setCelsius(20.0);
+                setC(20.0);
                 std::cout << "\nSet to room temperature:\n";
                 displayTemperatures();
                 waitForEnter();

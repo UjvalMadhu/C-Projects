@@ -31,7 +31,7 @@ class TemperatureConverter {
             void updateFromF();
             void updateFromK();
             void display() const;
-        }
+        };
 
         Temperature temp;                  // Variable Declaration
 
@@ -44,7 +44,7 @@ class TemperatureConverter {
         static double f2C(double f);
         static double f2K(double f);
         static double k2C(double k);
-        static double k2CF(double k);
+        static double k2F(double k);
 
         // Interface Functions
         void setC(double c);
@@ -57,5 +57,5 @@ class TemperatureConverter {
         // Utility functions
         static void clearScreen();
         static void waitForEnter();
-}
+};
 #endif

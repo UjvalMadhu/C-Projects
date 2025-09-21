@@ -1,0 +1,4 @@
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/build/CMakeFiles/edit_cache.dir
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/build/CMakeFiles/rebuild_cache.dir
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/build/CMakeFiles/temp_converter.dir
+/cygdrive/e/Learning/Subject_Learning/Cpp/C-Projects/Temperature_Converter/build/CMakeFiles/run.dir

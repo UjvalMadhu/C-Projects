@@ -1,64 +1,52 @@
 # Project Name: Temperature Converter
 
 The program creates a temperature converter that can convert any value in Celcius, Kelvin or Farenheit to the other two.
-This Program also develops a custom GUI using which the user can interact with the script.
+This Program also develops a custom command line GUI using which the user can interact with the script.
 
 ## Features
 
-The code effectively demonstrates:
+- Convert between Celsius, Fahrenheit, and Kelvin
+- Real-time conversion display
+- Preset temperature values (freezing, boiling, room temperature)
+- Input validation
+- Reference temperature information
 
-- Object Oriented Programming
-- GUI Development
-- Make File Compilation
+## Build and Run
 
-
-## Running the Program
-
+### Using CMake
 ```bash
-make pass1    # To run the first pass (write to file)
-make pass2    # To run the second pass (read from file)
-make clean    # To clean up the executable
+mkdir build && cd build
+cmake ..                  // Do this within the build folder
+make
+make run
 ```
 
-## Description
+### Using g++ directly
+```bash
+g++ -std=c++17 -O2 -Wall -o temp_converter main.cpp TemperatureConverter.cpp
+./temp_converter
+```
 
-### Structure Definition:
+## Usage
 
+Run the program and select from the menu:
+- Enter temperatures in any scale
+- View conversions in all three scales
+- Use preset values for common temperatures
 
-UserDetails struct stores:
+## Output
 
-User's name (char array)
-Birth date (day, month, year as integers)
-A method calculate_age() that computes current age using system time
+The program is output is demonstrated here:
 
+<p>
+    <img src = "./Images/Output.JPG"/>
+    <figcaption>Temperature Converter Output</figcaption>
+</p>
 
-- Pass1 Mode (-Dpass1):
+## Requirements
 
-
-Opens a file "user_data.txt" for writing
-Takes user input with validation:
-
-Name using getline()
-Birth date with error checking for valid ranges
-
-
-Writes the entire struct to file using binary write (write())
-
-
-- Pass2 Mode (-Dpass2):
-
-
-Opens the same file for reading
-Reads the struct data using binary read (read())
-Displays user's name and calculated age
-
-
-- Error Handling:
-
-
-Validates file operations
-Includes input validation for date components
-Uses cin.clear() and cin.ignore() for robust input handling
+- C++17 compatible compiler
+- CMake 3.10+ (optional)
 
 ## License
 
