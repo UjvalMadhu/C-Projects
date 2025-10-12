@@ -18,6 +18,16 @@ class TextBuffer {
         TextBuffer();
         explicit TextBuffer(const std::string& initialText);
 
-        
+        void insertLine(size_t position, const std::string& text);
+        void insertText(size_t lineNum, size_t colNum, const std::string& text);
+        void insertText(size_t lineNum, size_t colNum, std::string&& text);
 
+        bool deleteLine(size_t lineNum);
+        bool deleteText(size_t lineNum, size_t colNum, size_t length);
+
+        const std::string& getLine(size_t lineNum) const;
+        std::string& getLineRef(size_t lineNum);
+
+        char* findText(const std::string_view& searchTerm, size_t& foundLine, size_t& foundCol);
+        const char* findTextConst(const)
 }
