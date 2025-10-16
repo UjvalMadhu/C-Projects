@@ -29,5 +29,17 @@ class TextBuffer {
         std::string& getLineRef(size_t lineNum);
 
         char* findText(const std::string_view& searchTerm, size_t& foundLine, size_t& foundCol);
-        const char* findTextConst(const)
-}
+        const char* findTextConst(const std::string_view& searchTerm, size_t& foundLine, size_t& foundCol) const;
+
+        size_t getLineCount() const { return lines.size(); }
+        size_t getTotalSize() const { return totalSize; }
+        size_t getLineLength(size_t lineNum) const;
+        bool isEmpty() const { return lines.empty(); }
+
+        void resesrveLines(size_t capacity);
+        void clear();
+
+        void displayBuffer() const;
+};
+
+#endif
